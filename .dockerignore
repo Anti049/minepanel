@@ -1,0 +1,11 @@
+node_modules/
+sidecar/node_modules/
+.svelte-kit/
+.git/
+data/
+*.db
+*.log
+.env*
+README.md
+LICENSE
+docker-compose.yml
