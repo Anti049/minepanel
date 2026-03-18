@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>MinePanel</Name>
+  <Repository>ghcr.io/anti049/minepanel:latest</Repository>
+  <Registry>https://ghcr.io</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://github.com/Anti049/minepanel</Support>
+  <Project>https://github.com/Anti049/minepanel</Project>
+  <Overview>MinePanel — An all-in-one Minecraft server management panel for Unraid. Manage Java and Bedrock servers, view real-time console logs, and monitor resource usage from a single SvelteKit-powered web UI. Powered by Docker (Dockerode), SQLite, and s6-overlay.</Overview>
+  <Category>GameServers: Tools:</Category>
+  <WebUI>http://[IP]:[PORT:3000]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/Anti049/minepanel/main/unraid/minepanel.xml</TemplateURL>
+  <Icon>https://raw.githubusercontent.com/Anti049/minepanel/main/static/favicon.png</Icon>
+  <ExtraParams>--restart=unless-stopped -v /var/run/docker.sock:/var/run/docker.sock:ro</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled/>
+  <DonateText/>
+  <DonateLink/>
+  <Requires/>
+
+  <Config Name="WebUI Port" Target="3000" Default="3000" Mode="tcp" Description="Web interface port for MinePanel" Type="Port" Display="always" Required="true" Mask="false">3000</Config>
+  <Config Name="Sidecar WebSocket Port" Target="3001" Default="3001" Mode="tcp" Description="WebSocket port for real-time logs and stats (used internally or if not behind a reverse proxy)" Type="Port" Display="always" Required="true" Mask="false">3001</Config>
+  <Config Name="Data Directory" Target="/data" Default="/mnt/user/appdata/minepanel" Mode="rw" Description="Persistent data directory for the SQLite database, server configurations, and backups" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/minepanel</Config>
+  <Config Name="Docker Socket" Target="/var/run/docker.sock" Default="/var/run/docker.sock" Mode="ro" Description="Docker socket — required to manage Minecraft server containers" Type="Path" Display="always" Required="true" Mask="false">/var/run/docker.sock</Config>
+  <Config Name="Base Port" Target="BASE_PORT" Default="25565" Description="Starting port for server port block allocation. Each server gets BASE_PORT + N*PORT_BLOCK_SIZE" Type="Variable" Display="always" Required="false" Mask="false">25565</Config>
+  <Config Name="Port Block Size" Target="PORT_BLOCK_SIZE" Default="10" Description="Number of ports reserved per server (game + RCON + voice chat)" Type="Variable" Display="advanced" Required="false" Mask="false">10</Config>
+  <Config Name="Node Environment" Target="NODE_ENV" Default="production" Description="Node.js environment mode" Type="Variable" Display="advanced" Required="false" Mask="false">production</Config>
+</Container>

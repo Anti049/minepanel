@@ -1,0 +1,43 @@
+# MinePanel — .gitignore
+
+# Dependencies
+node_modules/
+sidecar/node_modules/
+
+# Build outputs
+build/
+.svelte-kit/
+sidecar/dist/
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+/data/
+
+# Drizzle generated (keep schema, ignore migration journal if desired)
+# drizzle/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# npm lockfile (this project uses bun — commit bun.lock instead)
+package-lock.json
+
+# Note: bun.lock is a binary lockfile and should be committed to version control
